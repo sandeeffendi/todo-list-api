@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { register, login } from "../controllers/authController.js";
 
-const authRouter = Router();
+const router = Router();
 
 /**
  * @openapi
@@ -31,7 +31,7 @@ const authRouter = Router();
  *       409:
  *         description: Email already registered
  */
-authRouter.post("/register", register);
+router.post("/register", register);
 
 /**
  * @openapi
@@ -57,6 +57,6 @@ authRouter.post("/register", register);
  *       401:
  *         description: Invalid credentials
  */
-authRouter.post("/login", login);
+router.post("/login", login);
 
-export default authRouter;
+export default router;

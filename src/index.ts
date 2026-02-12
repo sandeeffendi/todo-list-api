@@ -1,30 +1,16 @@
 import express, { type Request, type Response } from "express";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./config/swagger.js";
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRouter.js";
 
+dotenv.config();
 const app = express();
-const port = 5500;
+const port = Number.parseInt(process.env.PORT!);
 
-const getRequest = (req: Request, res: Response) => {
-  res.status(200).json({
-    statusCode: `${res.statusCode}`,
-    message: "Hello world!",
-  });
-};
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-const postRequest = (req: Request, res: Response) => {
-  res.status(201).json({
-    message: "success",
-  });
-
-  res.header(
-    JSON.stringify({
-      "Content-Type": "application/json",
-    }),
-  );
-};
-
-app.post("/", postRequest);
-
-app.get("/", getRequest);
+app.use("/api/auth", authRoutes);
 
 app.listen(port, "localhost", () => {
   console.log(`server is running on http://localhost:${port}`);
