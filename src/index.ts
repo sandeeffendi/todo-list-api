@@ -1,7 +1,8 @@
-import express, { type Request, type Response } from "express";
-import swaggerUi from "swagger-ui-express";
-import swaggerSpec from "./config/swagger.js";
 import dotenv from "dotenv";
+import express from "express";
+import swaggerUi from "swagger-ui-express";
+import { connectDb } from "./config/database.js";
+import swaggerSpec from "./config/swagger.js";
 import authRoutes from "./routes/authRouter.js";
 
 dotenv.config();
@@ -15,3 +16,5 @@ app.use("/api/auth", authRoutes);
 app.listen(port, "localhost", () => {
   console.log(`server is running on http://localhost:${port}`);
 });
+
+connectDb();

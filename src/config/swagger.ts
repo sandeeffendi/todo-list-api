@@ -5,7 +5,7 @@ const port = process.env.PORT;
 
 const swaggerOptions: swaggerjsdoc.Options = {
   definition: {
-    openapi: "3.2.0",
+    openapi: "3.0.0",
     info: {
       title: "Todo List Simple CRUD API",
       version: "1.0.0",
