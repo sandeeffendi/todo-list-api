@@ -1,7 +1,4 @@
-import {
-  default as swaggerJSDoc,
-  default as swaggerjsdoc,
-} from "swagger-jsdoc";
+import swaggerjsdoc from "swagger-jsdoc";
 
 const hostname = process.env.HOSTNAME;
 const port = process.env.PORT;
@@ -33,6 +30,6 @@ const swaggerOptions: swaggerjsdoc.Options = {
   apis: ["./src/routes/*.ts"],
 };
 
-const swaggerSpec = swaggerJSDoc(swaggerOptions);
+const swaggerSpec = swaggerjsdoc(swaggerOptions);
 
 export default swaggerSpec;
